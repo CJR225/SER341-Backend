@@ -11,7 +11,7 @@ var userRouter = express.Router();
 //user router 
 userRouter.route('/users')
 .get((req,res,next)=>{ 
-  res.write('hello');
+  res.send('hello');
 });
 
 userRouter.route('/')
@@ -23,17 +23,17 @@ userRouter.route('/')
       res.json(user);
   }
   )
-})
+});
 
 userRouter.route('/:id')
 .get(function(req,res){
     //let id = users._id;
     //finding user by id
-    Users.findById(req.params.id,function(err,user){
+    users.findById(req.params.id,function(err,user){
         if (err)
         console.log(err);
     res.send(user)
     });
-})
+});
 
 module.exports = userRouter;

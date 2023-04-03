@@ -1,6 +1,6 @@
 
-const mongoose = require('mongoose'),
-    assert = require('assert');
+const mongoose = require('mongoose');
+const assert = require('assert');
     
 const users = require('./models/users');
 const assignments = require('./models/assignments');
@@ -16,8 +16,6 @@ mongoose.connect(url,
     { useNewUrlParser: true },
      {useFindAndModify: false});
 
-
-
 //open a connection and get a db handler
 const db = mongoose.connection;
 
@@ -28,7 +26,8 @@ db.once('open',  ()=> {
     // we're connected!
     console.log("Connected correctly to server");
 
-    users.create({ firstName: "Bob", lastName: "Bobert", userName: "Mr.Bob", password: "bobsecret", typeOfUser:"Student"},
+    //adding data to db 
+   users.create({ firstName: "Bob", lastName: "Bobert", userName: "Mr.Bob", password: "bobsecret", typeOfUser:"Student"},
     (err, users) => {
         if(err) console.error(err);
         console.log("" + users);
@@ -47,6 +46,51 @@ db.once('open',  ()=> {
     (err, users) => {
         if(err) console.error(err);
         console.log("" + users);
+    }) 
+    assignments.create({title: "assignment1" , description: "blahblahblah", dueDate: "06/08/2023", studentSubmission:"none.txt", solutionFile: "solution.txt"},
+    (err, assignments) => {
+        if(err) console.error(err);
+        console.log("" + assignments);
     })
+    assignments.create({title: "assignment2" , description: "blahblahblah", dueDate: "06/08/2023", studentSubmission:"none.txt", solutionFile: "solution.txt"},
+    (err, assignments) => {
+        if(err) console.error(err);
+        console.log("" + assignments);
+    })
+    assignments.create({title: "assignment3" , description: "blahblahblah", dueDate: "06/08/2023", studentSubmission:"none.txt", solutionFile: "solution.txt"},
+    (err, assignments) => {
+        if(err) console.error(err);
+        console.log("" + assignments);
+    }) 
+    courses.create({courseCode:"1234",courseTitle:"CSC225"},
+    (err, courses) => {
+        if(err) console.error(err);
+        console.log("" + courses);
+    });
+    courses.create({courseCode:"5678",courseTitle:"CSC235"},
+    (err, courses) => {
+        if(err) console.error(err);
+        console.log("" + courses);
+    });
+    courses.create({courseCode:"91011",courseTitle:"CSC245"},
+    (err, courses) => {
+        if(err) console.error(err);
+        console.log("" + courses);
+    });
+    submissions.create({username:"ee", assignment:"assignment1",grade:"A"},
+    (err, submissions) => {
+        if(err) console.error(err);
+        console.log("" + submissions);
+    });
+    submissions.create({username:"eec", assignment:"assignment2",grade:"A"},
+    (err, submissions) => {
+        if(err) console.error(err);
+        console.log("" + submissions);
+    });
+    submissions.create({username:"eef", assignment:"assignment3",grade:"A"},
+    (err, submissions) => {
+        if(err) console.error(err);
+        console.log("" + submissions);
+    }); 
 }
 );			

@@ -6,10 +6,10 @@ var logger = require('morgan');
 const bodyParser = require("body-parser");
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+//var usersRouter = require('./routes/users');
 
 //we made this one
-var userRouter = require('./routes/usersRouter');
+//var userRouter = require('./routes/usersRouter');
 
 var users = require('./models/users');
 var assignments = require('./models/assignments');
@@ -47,10 +47,6 @@ mongoose
 
 app.use('/', indexRouter);
 
-app.use('/usersRouter', usersRouter);
-
-//we made this one
-app.use('/user',userRouter);
 
 app.use('/users', users);
 app.use('/courses', courses);
