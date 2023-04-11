@@ -3,17 +3,20 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var assignmentSchema = new Schema({
+    assignmentId : {
+        type: Integer
+    },
 	title : { 
-			type : String,
-			required: false,
-			},
+		type : String,
+		required: false,
+	},
 	description : {
-			type : String,
-			required : false
+		type : String,
+		required : false
 	},
     dueDate : {
-            type: Date,
-            required: false
+        type: Date,
+        required: false
     },
     studentSubmission : {
         type: String,
@@ -22,7 +25,15 @@ var assignmentSchema = new Schema({
     solutionFile : {
         type : String,
         required: false
-    }
+    },
+    course: {
+        type: Schema.Types.ObjectId,
+        ref:'Courses'
+    },
+    submissions: [{
+        type: Schema.Types.ObjectId,
+        ref:'Submissions'
+    }]
 });
 
 var Assignments = mongoose.model('Assignments', assignmentSchema);

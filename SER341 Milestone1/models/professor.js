@@ -1,9 +1,10 @@
 
 var mongoose = require('mongoose');
+const Courses = require('../models/courses');
 var Schema = mongoose.Schema;
 
 
-var userSchema = new Schema({
+var professorSchema = new Schema({
 	firstName : { 
 			type : String,
 			required: true,
@@ -20,12 +21,16 @@ var userSchema = new Schema({
         type: String,
         required: true
     },
-    typeOfUser : {
-        type : String,
+    professorId : {
+        type : Integer,
         required: true
-    }
+    },
+    courses: [{
+        type: Schema.Types.ObjectId,
+        ref:'Courses'
+    }]
 });
 
-var Users = mongoose.model('Users', userSchema);
+var Professors = mongoose.model('Professors', professorSchema);
 
-module.exports = Users;
+module.exports = Professors;
