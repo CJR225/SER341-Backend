@@ -14,7 +14,7 @@ var courseSchema = new Schema({
 			type : String,
 			required : true
 	},
-	prodessor: {
+	professor: {
         type: Schema.Types.ObjectId,
         ref:'Professors'
     },
