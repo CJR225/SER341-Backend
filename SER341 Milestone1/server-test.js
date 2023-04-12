@@ -1,10 +1,11 @@
 //code was modified from practice 4**
-const users = require('../models/users');
+const student = require('../models/student');
+const professor = require('../models/professor');
 const assignments = require('../models/assignments');
 const courses = require('../models/courses');
 const submissions = require('../models/submissions');
 
-//getting all users
+/* //getting all users
 users.find({},(err,user)=>{
     if(err) throw err;
         console.log(json(user));
@@ -96,5 +97,5 @@ submissions.findByIdAndDelete("6421ea09163f96181cb0f346", function(err,submissio
             console.log(err);
         console.log(submission);
     });
-
+ */
 

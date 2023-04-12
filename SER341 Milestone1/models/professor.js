@@ -22,7 +22,7 @@ var professorSchema = new Schema({
         required: true
     },
     professorId : {
-        type : Integer,
+        type : Number,
         required: true
     },
     courses: [{

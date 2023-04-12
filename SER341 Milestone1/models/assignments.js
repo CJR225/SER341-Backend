@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 
 var assignmentSchema = new Schema({
     assignmentId : {
-        type: Integer
+        type: Number
     },
 	title : { 
 		type : String,

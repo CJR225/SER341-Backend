@@ -1,32 +1,32 @@
 var express = require('express');
-const professor = require('../models/professor');
+var router = express.Router();
 const student = require('../models/student');
+const professor = require('../models/professor');
 const assignments = require('../models/assignments');
 const courses = require('../models/courses');
 const submissions = require('../models/submissions');
 
-var userRouter = express.Router();
-
-//initialize
-
-//user router 
-userRouter.route('/users')
-.get((req,res,next)=>{ 
-  res.send('hello');
+router.route('/student/createAccount')
+.post(function(req,res){
+    console.log(req.body);
+    student.create(req.body,function(err,student){
+        if (err)
+        console.log(err);
+    res.send(student)
+    });
 });
 
-userRouter.route('/')
-.get((req,res,next)=>{ //chained into route(), no semi-colon after the all implementation
-    // 2- implement get  to return all recipes  
-     users.find({},(err,user)=>
-  {
-      if(err) throw err;
-      res.json(user);
-  }
-  )
+/* GET home page. */
+router.get('/', function(req, res, next) {
+  res.render('index', { title: 'Express' });
 });
 
-userRouter.route('/:id')
+router.route('/user')
+.get((req,res,next)=>{
+    res.send('hello');
+});
+
+/* router.route('/:id')
 .get(function(req,res){
     //let id = users._id;
     //finding user by id
@@ -38,26 +38,19 @@ userRouter.route('/:id')
 });
 
 
-userRouter.route('/student/login')
+router.route('/student/login')
 .post(function(req,res){
 
 });
 
-userRouter.route('/professor/login')
+router.route('/professor/login')
 .post(function(req,res){
 
-});
+}); */
 
-userRouter.route('/student/:studentId/createAccount')
-.post(function(req,res){
-    student.findById(req.params.studentId,function(err,student){
-        if (err)
-        console.log(err);
-    res.send(student)
-    });
-});
 
-userRouter.route('/professor/professorId/createAccount')
+
+/* router.route('/professor/professorId/createAccount')
 .post(function(req,res){
     professor.findById(req.params.professorId,function(err,professor){
         if (err)
@@ -67,17 +60,17 @@ userRouter.route('/professor/professorId/createAccount')
 
 });
 
-userRouter.route('/student/:studentId/logout')
+router.route('/student/:studentId/logout')
 .post(function(req,res){
 
 });
 
-userRouter.route('/professor/:professorId/logout')
+router.route('/professor/:professorId/logout')
 .post(function(req,res){
 
 });
 
-userRouter.route('/student/:studentId/courses')
+router.route('/student/:studentId/courses')
 .get(function(req,res){
     student.findById(req.params.studentId,function(err,courses){
         if (err)
@@ -86,7 +79,7 @@ userRouter.route('/student/:studentId/courses')
     });
 });
 
-userRouter.route('/professor/:professorId/courses')
+router.route('/professor/:professorId/courses')
 .get(function(req,res){
     professor.findById(req.params.professorId,function(err,courses){
         if (err)
@@ -103,7 +96,7 @@ userRouter.route('/professor/:professorId/courses')
 
 });
 
-userRouter.route('/student/:studentId/courses/:courseId/assignments')
+router.route('/student/:studentId/courses/:courseId/assignments')
 .get(function(req,res){
     student.findById(req.params.studentId, req.params.courseId,function(err,assignments){
         if (err)
@@ -112,7 +105,7 @@ userRouter.route('/student/:studentId/courses/:courseId/assignments')
         });
 });
 
-userRouter.route('/professor/:professorId/courses/:courseId/assignments')
+router.route('/professor/:professorId/courses/:courseId/assignments')
 .get(function(req,res){
     professor.findById(req.params.professorId, req.params.courseId,function(err,assignments){
         if (err)
@@ -122,7 +115,7 @@ userRouter.route('/professor/:professorId/courses/:courseId/assignments')
 
 });
 
-userRouter.route('/student/:studentId/courses/:courseId/assignments/:assignmentId')
+router.route('/student/:studentId/courses/:courseId/assignments/:assignmentId')
 .get(function(req,res){
     student.findById(req.params.studentId, req.params.courseId, req.params.assignmentId,function(err,assignments){
         if (err)
@@ -132,7 +125,7 @@ userRouter.route('/student/:studentId/courses/:courseId/assignments/:assignmentI
 
 });
 
-userRouter.route('/professor/:professorId/courses/:courseId/assignments/:assignmentId')
+router.route('/professor/:professorId/courses/:courseId/assignments/:assignmentId')
 .get(function(req,res){
     professor.findById(req.params.professorId, req.params.courseId, req.params.assignmentId,function(err,assignments){
         if (err)
@@ -150,7 +143,7 @@ userRouter.route('/professor/:professorId/courses/:courseId/assignments/:assignm
 });
 
 
-userRouter.route('/student/:studentId/courses/:courseId/assignments/:assignmentId/file')
+router.route('/student/:studentId/courses/:courseId/assignments/:assignmentId/file')
 .put(function(req,res){
     student.findById(req.params.studentId, req.params.courseId, req.params.assignmentId,function(err,assignments){
         if (err)
@@ -169,7 +162,7 @@ userRouter.route('/student/:studentId/courses/:courseId/assignments/:assignmentI
 });
 
 
-userRouter.route('/professor/:professorId/courses/:courseId/assignments/:assignmentId/file')
+router.route('/professor/:professorId/courses/:courseId/assignments/:assignmentId/file')
 .put(function(req,res){
     professor.findById(req.params.professorId, req.params.courseId, req.params.assignmentId,function(err,assignments){
         if (err)
@@ -186,7 +179,7 @@ userRouter.route('/professor/:professorId/courses/:courseId/assignments/:assignm
 
 })
 
-userRouter.route('/student/:studentId/courses/:courseId')
+router.route('/student/:studentId/courses/:courseId')
 .post(function(req,res){
     student.findById(req.params.studentId, req.params.courseId, function(err,courses){
         if (err)
@@ -194,7 +187,7 @@ userRouter.route('/student/:studentId/courses/:courseId')
         });
 });
 
-userRouter.route('/student/:studentId/courses/:courseId/submissions')
+router.route('/student/:studentId/courses/:courseId/submissions')
 .get(function(req,res){
     student.findById(req.params.studentId, req.params.courseId, function(err,submissions){
         if (err)
@@ -202,6 +195,6 @@ userRouter.route('/student/:studentId/courses/:courseId/submissions')
     res.send(submissions)
         });
 
-})
+}); */
 
-module.exports = userRouter;
+module.exports = router;

@@ -24,7 +24,7 @@ var studentSchema = new Schema({
         required: true
     },
     studentId : {
-        type : Integer,
+        type : Number,
         required: true
     },
     courses: [{
@@ -38,6 +38,6 @@ var studentSchema = new Schema({
 
 });
 
-var Students = mongoose.model('Students', studentSchema);
+var Students = mongoose.model('student', studentSchema);
 
 module.exports = Students;
