@@ -27,14 +27,13 @@ var studentSchema = new Schema({
         type : Number,
         required: true
     },
-    courses: [{
-        type: Schema.Types.ObjectId,
-        ref:'Courses'
-    }],
-    submissions: [{
-        type: Schema.Types.ObjectId,
-        ref:'Submissions'
-    }]
+    courses: {
+        type: [String],
+        required: false
+    },
+    submissions: {
+        type: [String]
+    }
 
 });
 

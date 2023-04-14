@@ -15,19 +15,16 @@ var courseSchema = new Schema({
 			required : true
 	},
 	professor: {
-        type: Schema.Types.ObjectId,
-        ref:'Professors'
+        type: String
     },
-	students: [{
-        type: Schema.Types.ObjectId,
-        ref:'Students'
-    }],
-	assignments: [{
-        type: Schema.Types.ObjectId,
-        ref:'Assignments'
-    }]
+	students: {
+        type: [String]
+    },
+	assignments: {
+		type: [String]
+    }
 });
 
-var Courses = mongoose.model('Courses', courseSchema);
+var Courses = mongoose.model('courses', courseSchema);
 
 module.exports = Courses;

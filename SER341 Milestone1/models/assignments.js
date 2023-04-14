@@ -27,15 +27,13 @@ var assignmentSchema = new Schema({
         required: false
     },
     course: {
-        type: Schema.Types.ObjectId,
-        ref:'Courses'
+        type: String
     },
-    submissions: [{
-        type: Schema.Types.ObjectId,
-        ref:'Submissions'
-    }]
+    submissions: {
+        type: [String]
+    }
 });
 
-var Assignments = mongoose.model('Assignments', assignmentSchema);
+var Assignments = mongoose.model('assignments', assignmentSchema);
 
 module.exports = Assignments;

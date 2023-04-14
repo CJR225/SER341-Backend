@@ -8,8 +8,7 @@ var Schema = mongoose.Schema;
 
 var submissionSchema = new Schema({
 	student : { 
-			type : Schema.Types.ObjectId,
-			ref: 'Student',
+			type: String,
 			required: true,
 			},
     grade : { 
@@ -17,11 +16,10 @@ var submissionSchema = new Schema({
         required: true,
         },
 	assignment: {
-		type: Schema.Types.ObjectId,
-		ref:'Assignment'
+		type: [String]
 		}
 });
 
-var Submissions = mongoose.model('Submissions', submissionSchema);
+var Submissions = mongoose.model('submissions', submissionSchema);
 
 module.exports = Submissions;

@@ -26,8 +26,7 @@ var professorSchema = new Schema({
         required: true
     },
     courses: [{
-        type: Schema.Types.ObjectId,
-        ref:'Courses'
+        type: [String]
     }]
 });
 
