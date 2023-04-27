@@ -2,6 +2,9 @@ import "./style-course-view.css";
 import React, { Component } from "react";
 import { getCourses } from "../services/courseService";
 import CourseHomeBody from "./coursehomeBody";
+import SideBar from "./sideBar";
+
+//make sidebar separate component
 
 class CourseHome extends Component {
   constructor(props) {
@@ -11,42 +14,16 @@ class CourseHome extends Component {
       query: "",
     };
     this.handleSearch = this.handleSearch.bind(this);
-
-
-    
   }
 
-  
   handleSearch = (event) => {
     this.setState({ query: event.target.value });
   };
 
   render() {
     return (
-      <body>
-        <div id="menu">
-          <div className="hamburger">
-            <div className="line"></div>
-            <div className="line"></div>
-            <div className="line"></div>
-          </div>
-          <div className="menu-inner">
-            <ul className="menu-list">
-              <li className="menu-item">
-                <a href="../indexes/SignIn.html">Logout</a>
-              </li>
-              <li className="menu-item">
-                <a
-                  data-bs-toggle="modal"
-                  data-bs-target="#joincourseModal"
-                  href="#"
-                >
-                  Join Course
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
+      <body style={{ backgroundColor: "#26394e", minHeight: "100" }}>
+        <SideBar />
 
         <header>
           <div className="container p-4">
@@ -58,13 +35,13 @@ class CourseHome extends Component {
           </div>
         </header>
 
-
-
         <React.Fragment>
-          <div className="container mt-5">
+          <table className="container mt-5">
             <CourseHomeBody courses={this.state.courses} />
-          </div>
+          </table>
         </React.Fragment>
+
+
       </body>
     );
   }
