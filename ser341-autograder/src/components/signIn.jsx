@@ -1,9 +1,24 @@
+import "./SignInSignUpStyle.css";
 import React, { Component } from "react";
+import Joi from "joi-browser";
+import Form from "./form";
 class SignIn extends Component {
-  constructor(props) {
-    super(props);
-  }
-  state = {};
+  state = {
+    data: { username: "", password: "" },
+    errors: {}
+  };
+  schema = {
+    username: Joi.string()
+      .required()
+      .label("Username"),
+    password: Joi.string()
+      .required()
+      .label("Password")
+  };
+  doSubmit = () => {
+    // Call the server
+    console.log("Submitted");
+  };
   render() {
     return (
       <body>
@@ -39,8 +54,8 @@ class SignIn extends Component {
           <span></span>
           <span></span>
 
-          <main className="pt-5">
-            <div className="container py-5 h-100">
+          <main>
+            <div className="container py-4 h-100">
               <div className="row d-flex justify-content-center align-items-center h-100">
                 <div className="col-12 col-md-8 col-lg-6 col-xl-5">
                   <div className="card text-white" styles="border-radius: 1rem;">
@@ -64,7 +79,7 @@ class SignIn extends Component {
                               Username
                             </label>
                           </div>
-
+      
                           <div className="form-outline form-white mb-4">
                             <input
                               type="password"

@@ -4,7 +4,9 @@ import logo from "./SER340img.png";
 class CourseHomeBody extends Component {
   render() {
     const { courses } = this.props;
+    console.log(courses);
     return (
+      
       <body>
         {courses.map((course, index) => (
           <td key={index}>
@@ -19,12 +21,12 @@ class CourseHomeBody extends Component {
               />
               <div className="card-body">
                 <p className="card-text fw-bold fs-5">
-                  <strong> course {courses.course}</strong>
+                  <strong>{course.course}</strong>
                 </p>
                 <p className="card-text fw-bold fs-5">
-                  {courses.name} course name
+                  {course.name}
                 </p>
-                <text>{courses.instructor} instructor</text>
+                <text>{course.instructor}</text>
               </div>
             </div>
           </td>
