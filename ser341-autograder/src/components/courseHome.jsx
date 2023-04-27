@@ -1,4 +1,4 @@
-
+import "./style-course-view.css";
 import React, { Component } from "react";
 import { getCourses } from "../services/courseService";
 import CourseHomeBody from "./coursehomeBody";
@@ -58,32 +58,10 @@ class CourseHome extends Component {
           </div>
         </header>
 
-        <main>
-          <div className="container mb-5 mt-5" style={{marginRight: "20px"}}>
-            <div className="row-cols-auto">
-              <div className="col-3">
-                <div className="input-group rounded-0">
-                  <span
-                    className="input-group-text rounded-0"
-                    id="search-addon"
-                  >
-                    <i className="fa-solid fa-magnifying-glass"></i>
-                  </span>
-                  <input
-                    type="search"
-                    className="form-control rounded-0"
-                    placeholder="Search your courses"
-                    aria-label="Search"
-                    aria-describedby="search-addon"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </main>
+
 
         <React.Fragment>
-          <div className="container g-3">
+          <div className="container mt-5">
             <CourseHomeBody courses={this.state.courses} />
           </div>
         </React.Fragment>

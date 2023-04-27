@@ -7,7 +7,7 @@ function App() {
   return (
     <div>
   
-          <SignIn/>
+          <CourseHome/>
 
     </div>
   );
