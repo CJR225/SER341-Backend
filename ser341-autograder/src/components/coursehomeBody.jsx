@@ -4,7 +4,6 @@ import logo from "./SER340img.png";
 class CourseHomeBody extends Component {
   render() {
     const { courses } = this.props;
-    console.log(courses);
     return (
       
       <tbody>
