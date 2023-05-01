@@ -1,8 +1,5 @@
 var mongoose = require("mongoose");
-const Courses = require("../models/courses");
-const Submissions = require("../models/submissions");
 var passportLocalMongoose = require("passport-local-mongoose");
-
 var Schema = mongoose.Schema;
 
 var studentSchema = new Schema({
@@ -35,8 +32,13 @@ var studentSchema = new Schema({
   },
 });
 
-var Students = mongoose.model("Student", studentSchema);
+//an instance method added here to return fullname of the user
+studentSchema.methods.getName = function () {
+  return this.firstname + " " + this.lastname;
+};
 
-student.plugin(passportLocalMongoose); //adds the user hash and salt fileds to store the user name, the hashed password and salted value
+studentSchema.plugin(passportLocalMongoose); //adds the user hash and salt fileds to store the user name, the hashed password and salted value
 
-module.exports = Students;
+module.exports = mongoose.model("Student", studentSchema);
+
+

@@ -1,9 +1,9 @@
 
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-const Professors = require('../models/professor');
-const Students = require('../models/student');
 
+require('mongoose-currency').loadType(mongoose);
+var Currency = mongoose.Types.Currency;
 
 var courseSchema = new Schema({
 	courseId : { 
@@ -25,6 +25,6 @@ var courseSchema = new Schema({
     }
 });
 
-var Courses = mongoose.model('courses', courseSchema);
-
-module.exports = Courses;
+//idk if this is working lol
+var Course = mongoose.model('courses', courseSchema);
+module.exports = Course;
